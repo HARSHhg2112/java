@@ -13,6 +13,31 @@ public class cointainsmostwater {
         }
         return maxwater;
     }
+    //2pointer approch
+
+    public static int storewater2(ArrayList<Integer> height){
+        int maxwater=0;
+        int leftpointer=0;
+        int rightpointer=height.size()-1;
+        while(leftpointer<rightpointer){
+            int ht=Math.min(height.get(leftpointer),height.get(rightpointer));
+            int width=rightpointer-leftpointer;
+            int currwater=ht*width;
+            maxwater=Math.max(maxwater,currwater);
+
+            if(height.get(leftpointer)<height.get(rightpointer)){
+                leftpointer++;
+
+            }
+            else{
+                rightpointer--;
+            }
+
+
+
+        }
+        return maxwater;
+    }
     public static void main(String[] args) {
         ArrayList<Integer> height=new ArrayList<>();
         height.add(1);
